@@ -1,10 +1,12 @@
 <?php
 
-use CodeIgniter\Router\RouteCollection;
+// Menambahkan Routes file untuk admin
+require APPPATH . 'Routes/admin.php';
 
-/**
- * @var RouteCollection $routes
- */
+// Menambahkan Routes file untuk auth (login, register, logout)
+require APPPATH . 'Routes/auth.php';
 
- 
-$routes->get('/', 'Home::index');
+// ... dan seterusnya
+// Tambahkan Routes file lainnya
+
+
