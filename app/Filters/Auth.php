@@ -6,7 +6,7 @@ use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 
-class Only implements FilterInterface
+class Auth implements FilterInterface
 {
     /**
      * Do whatever processing this filter needs to do.
@@ -25,19 +25,9 @@ class Only implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        // Mode Pengembangan (Development)
-        if ($arguments[0] === 'all') {
-            return;
-        }
-
         // Check if user is logged in
-        if (!session()->get('isLoggedIn')) {
-            return redirect()->to('/login');
-        }
-
-        // Cek Role akses user
-        if (!in_array(session()->get('role'), $arguments)) {
-            return redirect()->to('/login');
+        if (session()->get('role')) {
+            return redirect()->to('/' . session()->get('role'));
         }
     }
 
