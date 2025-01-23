@@ -39,6 +39,9 @@ class Only implements FilterInterface
         if (!in_array(session()->get('role'), $arguments)) {
             return redirect()->to('/login');
         }
+
+        // Jika lolos, maka lanjutkan
+        
     }
 
     /**
